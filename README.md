@@ -7,8 +7,11 @@ education platform (study abroad · foreign educators · school partnerships).
 
 - Astro 7 + Tailwind CSS 4, fully static — no backend, no CMS.
 - zh-TW at `/`, English at `/en/`. All copy lives in `src/i18n/ui.ts`.
-- Deploys to GitHub Pages automatically on push to `main`
-  (`.github/workflows/deploy.yml`).
+- Deploys to GitHub Pages from the `gh-pages` branch: run `./scripts/deploy.sh`.
+  (An Actions workflow exists untracked at `.github/workflows/deploy.yml`; the
+  personal gh token lacks the `workflow` scope to push it — run
+  `GH_CONFIG_DIR=~/.config/gh-personal gh auth refresh -h github.com -s workflow`
+  once, un-ignore it, and switch Pages source to "GitHub Actions" to automate.)
 
 Design spec: `docs/superpowers/specs/2026-07-03-ouigoal-site-design.md`
 
