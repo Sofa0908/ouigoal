@@ -1,0 +1,144 @@
+---
+import Base from '../layouts/Base.astro';
+import { dict, localeUrl, SITE, type Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = dict[locale];
+const url = (p: string) => localeUrl(locale, p);
+const [headline1, headline2] = t.hero.headline.split('\n');
+
+const cards = [
+  { page: t.pages.explore, icon: 'compass' },
+  { page: t.pages.work, icon: 'globe' },
+  { page: t.pages.partner, icon: 'handshake' },
+] as const;
+---
+
+<Base locale={locale} path="/">
+  <!-- ── Hero ─────────────────────────────────────────── -->
+  <section class="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden bg-navy-900">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-700"></div>
+    <!-- Decorative flight-path / connection motif -->
+    <svg
+      class="pointer-events-none absolute inset-0 h-full w-full opacity-40"
+      viewBox="0 0 1440 800"
+      fill="none"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <circle cx="1180" cy="180" r="320" stroke="#3d6190" stroke-width="1" opacity="0.5"></circle>
+      <circle cx="1180" cy="180" r="440" stroke="#3d6190" stroke-width="1" opacity="0.3"></circle>
+      <circle cx="1180" cy="180" r="560" stroke="#3d6190" stroke-width="1" opacity="0.2"></circle>
+      <path d="M180 620 Q 620 240 1150 320" stroke="#e8a33d" stroke-width="1.5" stroke-dasharray="2 8" opacity="0.9"></path>
+      <path d="M260 700 Q 760 480 1250 520" stroke="#5c7fab" stroke-width="1.2" stroke-dasharray="2 8" opacity="0.7"></path>
+      <circle cx="180" cy="620" r="5" fill="#e8a33d"></circle>
+      <circle cx="1150" cy="320" r="7" fill="#e8a33d"></circle>
+      <circle cx="1150" cy="320" r="14" stroke="#e8a33d" stroke-width="1.5" opacity="0.5"></circle>
+      <circle cx="260" cy="700" r="4" fill="#8aa5c8"></circle>
+      <circle cx="1250" cy="520" r="5" fill="#8aa5c8"></circle>
+      <circle cx="420" cy="180" r="3" fill="#8aa5c8" opacity="0.8"></circle>
+      <circle cx="720" cy="120" r="2.5" fill="#e8a33d" opacity="0.8"></circle>
+      <circle cx="960" cy="640" r="3" fill="#8aa5c8" opacity="0.6"></circle>
+    </svg>
+
+    <div class="relative mx-auto w-full max-w-6xl px-5 py-24 lg:px-8">
+      <p class="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-gold-400">{t.hero.eyebrow}</p>
+      <h1 class="font-display text-4xl font-semibold leading-tight text-white sm:text-6xl lg:text-7xl">
+        {headline1}<br />
+        <span class="text-gold-400 italic">{headline2}</span>
+      </h1>
+      <p class="mt-7 max-w-2xl text-base leading-relaxed text-navy-100 sm:text-lg">{t.hero.sub}</p>
+      <div class="mt-10">
+        <a
+          href="#contact"
+          class="inline-block rounded-full bg-gold-500 px-8 py-3.5 text-sm font-bold tracking-wide text-navy-950 shadow-lg shadow-gold-500/25 transition hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-xl hover:shadow-gold-500/30"
+        >
+          {t.hero.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ────────────────────────────────────────── -->
+  <section id="about" class="scroll-mt-16 bg-white py-24">
+    <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">{t.about.kicker}</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">{t.about.heading}</h2>
+      <div class="mx-auto mt-6 h-px w-16 bg-gold-500"></div>
+      {t.about.body.map((p) => (
+        <p class="mt-6 text-base leading-loose text-navy-600">{p}</p>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Services ─────────────────────────────────────── -->
+  <section id="services" class="scroll-mt-16 bg-navy-50/60 py-24">
+    <div class="mx-auto max-w-6xl px-5 lg:px-8">
+      <div class="text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">{t.services.kicker}</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">{t.services.heading}</h2>
+        <p class="mt-4 text-navy-500">{t.services.sub}</p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {cards.map(({ page, icon }) => (
+          <a
+            href={url(`/services/${page.slug}`)}
+            class="group flex flex-col rounded-2xl bg-navy-900 p-8 shadow-md transition duration-300 hover:-translate-y-2 hover:bg-navy-800 hover:shadow-2xl hover:shadow-navy-900/25"
+          >
+            <span class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-500/15 text-gold-400">
+              {icon === 'compass' && (
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m15.5 8.5-2 5-5 2 2-5 5-2Z" />
+                </svg>
+              )}
+              {icon === 'globe' && (
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9" />
+                  <path stroke-linecap="round" d="M3 12h18M12 3c2.5 2.5 3.75 5.6 3.75 9S14.5 18.5 12 21c-2.5-2.5-3.75-5.6-3.75-9S9.5 5.5 12 3Z" />
+                </svg>
+              )}
+              {icon === 'handshake' && (
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 9 8 5.5a2 2 0 0 1 2.8 0l.7.7m-7 2.8-2 2a2 2 0 0 0 0 2.8l4.2 4.2a2 2 0 0 0 2.8 0l.5-.5m-5.5-8.5 3.5 3.5m4-6.5L19.5 9m0 0 2-2m-2 2-4.7 4.7a2 2 0 0 1-2.8 0L11.5 13" />
+                </svg>
+              )}
+            </span>
+            <h3 class="font-display text-xl font-semibold text-white">{page.name}</h3>
+            <p class="mt-1 text-xs font-medium uppercase tracking-widest text-gold-400/90">{page.subtitle}</p>
+            <p class="mt-4 flex-1 text-sm leading-relaxed text-navy-200">{page.intro}</p>
+            <span class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-400 transition group-hover:gap-3">
+              {t.services.more}
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ──────────────────────────────────────── -->
+  <section id="contact" class="scroll-mt-16 bg-white py-24">
+    <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">{t.contact.kicker}</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">{t.contact.heading}</h2>
+      <p class="mt-6 leading-relaxed text-navy-600">{t.contact.body}</p>
+      <div class="mt-10 inline-flex flex-col items-center rounded-2xl border border-navy-100 bg-navy-50/50 px-10 py-8 sm:px-16">
+        <p class="text-xs font-semibold uppercase tracking-widest text-navy-400">{t.contact.emailLabel}</p>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="mt-3 font-display text-2xl font-semibold text-navy-900 underline decoration-gold-500 decoration-2 underline-offset-8 transition hover:text-gold-600 sm:text-3xl"
+        >
+          {SITE.email}
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
