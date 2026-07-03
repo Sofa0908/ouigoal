@@ -65,13 +65,50 @@ const cards = [
 
   <!-- ── About ────────────────────────────────────────── -->
   <section id="about" class="scroll-mt-16 bg-white py-24">
-    <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
-      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">{t.about.kicker}</p>
-      <h2 class="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">{t.about.heading}</h2>
-      <div class="mx-auto mt-6 h-px w-16 bg-gold-500"></div>
-      {t.about.body.map((p) => (
-        <p class="mt-6 text-base leading-loose text-navy-600">{p}</p>
-      ))}
+    <div class="mx-auto max-w-5xl px-5 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">{t.about.kicker}</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">{t.about.heading}</h2>
+        <div class="mx-auto mt-6 h-px w-16 bg-gold-500"></div>
+        <p class="mt-6 text-base leading-loose text-navy-600">{t.about.vision}</p>
+      </div>
+
+      <div class="mt-12 grid gap-8 sm:grid-cols-3">
+        {t.about.pillars.map((pillar, i) => (
+          <div class="text-center">
+            <span class="font-display text-2xl font-semibold text-gold-500/80">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2 font-display text-lg font-semibold text-navy-900">{pillar.title}</h3>
+            <p class="mt-0.5 text-xs font-medium uppercase tracking-widest text-navy-400">{pillar.subtitle}</p>
+            <p class="mt-3 text-sm leading-relaxed text-navy-500">{pillar.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="relative mt-16 overflow-hidden rounded-3xl bg-navy-900 px-8 py-12 sm:px-14">
+        <svg
+          class="pointer-events-none absolute inset-0 h-full w-full opacity-25"
+          viewBox="0 0 1000 400"
+          fill="none"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          <circle cx="880" cy="40" r="220" stroke="#3d6190" stroke-width="1" opacity="0.6"></circle>
+          <circle cx="880" cy="40" r="320" stroke="#3d6190" stroke-width="1" opacity="0.35"></circle>
+          <path d="M60 340 Q 420 140 860 200" stroke="#e8a33d" stroke-width="1.2" stroke-dasharray="2 8" opacity="0.8"></path>
+          <circle cx="60" cy="340" r="4" fill="#e8a33d"></circle>
+          <circle cx="860" cy="200" r="5" fill="#e8a33d"></circle>
+        </svg>
+        <div class="relative">
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-400">{t.about.story.kicker}</p>
+          <h3 class="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">{t.about.story.heading}</h3>
+          <p class="mt-4 font-display text-lg italic text-gold-300">
+            Oui = <span class="not-italic">Yes</span> · OuiGoal = <span class="not-italic">We Go</span> — Learn beyond the box.
+          </p>
+          {t.about.story.body.map((p) => (
+            <p class="mt-5 max-w-3xl text-sm leading-loose text-navy-100 sm:text-base">{p}</p>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 

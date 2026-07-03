@@ -32,7 +32,13 @@ export interface Dict {
     sub: string;
     cta: string;
   };
-  about: { heading: string; kicker: string; body: string[] };
+  about: {
+    heading: string;
+    kicker: string;
+    vision: string;
+    pillars: { title: string; subtitle: string; desc: string }[];
+    story: { kicker: string; heading: string; body: string[] };
+  };
   services: {
     heading: string;
     kicker: string;
@@ -95,10 +101,33 @@ export const dict: Record<Locale, Dict> = {
     about: {
       heading: '關於我們',
       kicker: 'About OuiGoal',
-      body: [
-        'OuiGoal（邦加國際文教發展股份有限公司）是一個國際教育一站式整合平台，串聯跨國留遊學顧問、外籍師資招募管理，以及公私立學校與機構的合規對接。',
-        '我們相信教育不該被框架限制 — 每一位學生、每一位教師、每一所學校，都值得一個精準的配對。從短期興趣探索到長期升學規劃，從外師來台的第一份文件到落地生活的每個細節，OuiGoal 以專業與嚴謹，讓跨越國界這件事變得安心而簡單。',
+      vision:
+        '邦加國際文教發展股份有限公司（OuiGoal Consultancy Co. Ltd.）是一家立足台灣、對接全球的頂尖教育諮詢與師資整合機構。我們深信每位學員、教師與機構皆具備獨一無二的潛力，因此不套用傳統公式，致力於為三大核心領域提供最專業的制度支持與客製化解決方案。',
+      pillars: [
+        {
+          title: '留遊學規劃',
+          subtitle: 'Global Education',
+          desc: '為從幼兒園到高中、有志於海外深造的學員與家長，擘劃最具前瞻性的國際升學路徑。',
+        },
+        {
+          title: '外師職涯引領',
+          subtitle: 'Educator Careers',
+          desc: '為優秀的海外外籍教師提供全方位的來台執教機會、法規簽證（ARC）代辦與完整的落地安家照顧。',
+        },
+        {
+          title: '機構與標案合作',
+          subtitle: 'Institutional Solutions',
+          desc: '為公私立學校、機構與政府專案提供高效、合規的國際師資招募與優質的雙語教學支持方案。',
+        },
       ],
+      story: {
+        kicker: 'The OuiGoal Story',
+        heading: '品牌故事',
+        body: [
+          '品牌名稱「OuiGoal」融合了法文「Oui」（意為 Yes），象徵對傳統教育框架的翻轉與突圍，呼應我們的核心理念——「打破框架，翻轉未來（Learn beyond the box）」。我們鼓勵跳脫僵化的思維窠臼，更想向所有與我們合作的家長、外師與機構承諾：當您準備好的那一刻，OuiGoal 已經為您打通了與世界接軌的每一步路。',
+          '「OuiGoal」亦蘊含「We Go」的深刻寓意——這是一場攜手並進的旅程。不論是赴外深造、來台教學，或是機構的國際化轉型，在追求卓越的路上，邦加都將與您一路同行。',
+        ],
+      },
     },
     services: {
       heading: '服務項目',
@@ -174,10 +203,33 @@ export const dict: Record<Locale, Dict> = {
     about: {
       heading: 'About Us',
       kicker: 'About OuiGoal',
-      body: [
-        'OuiGoal Consultancy Co. Ltd. is a one-stop international education platform connecting study-abroad consulting, international educator recruitment and management, and compliant partnerships with public and private schools and institutions.',
-        'We believe education should never be confined by convention — every student, every teacher, and every school deserves a precise match. From short-term exploration to long-term academic planning, from a teacher’s first visa document to the details of settling into life in Taiwan, OuiGoal makes crossing borders simple and secure.',
+      vision:
+        'OuiGoal Consultancy Co. Ltd. is a premium educational consulting and teacher integration agency, rooted in Taiwan and connected to the world. We believe in the uniqueness and developmental potential of every student, educator, and institution — so instead of applying a standard formula, we chart customized paths through three core pillars.',
+      pillars: [
+        {
+          title: 'Global Education',
+          subtitle: '留遊學規劃',
+          desc: 'Professional consulting and bespoke pathways for students from preschool to high school aspiring to study abroad.',
+        },
+        {
+          title: 'Educator Careers',
+          subtitle: '外師職涯引領',
+          desc: 'Comprehensive career opportunities, visa (ARC) assistance, and complete relocation support for foreign teachers in Taiwan.',
+        },
+        {
+          title: 'Institutional Solutions',
+          subtitle: '機構與標案合作',
+          desc: 'Compliant, high-quality foreign teacher recruitment and institutional solutions for public and private schools and government projects.',
+        },
       ],
+      story: {
+        kicker: 'The OuiGoal Story',
+        heading: 'Our Story',
+        body: [
+          'The name “OuiGoal” incorporates “Oui” — “yes” in French — symbolizing a willingness to learn beyond the confines of traditional education. It resonates with our slogan, “Learn beyond the box”: a departure from fixed mindsets and conventional patterns of thinking. And to every parent, teacher, and partner institution, it is a promise — when you are ready, the future is ready too.',
+          'Another layer of OuiGoal lies in its sound: “Oui” as we, “Goal” as go. Whether you are heading abroad to study, coming to Taiwan to teach, or taking your institution global — proceed without worries. We will be with you every step of the way.',
+        ],
+      },
     },
     services: {
       heading: 'Our Services',
