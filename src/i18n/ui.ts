@@ -55,7 +55,6 @@ export interface Dict {
   pages: Record<'explore' | 'work' | 'partner', ServicePage>;
 }
 
-// Page B (Work, Teach & Live) is English-only by spec — shared by both locales.
 const workPage: ServicePage = {
   slug: 'work-teach-live',
   name: 'Work, Teach & Live',
@@ -165,7 +164,32 @@ export const dict: Record<Locale, Dict> = {
           },
         ],
       },
-      work: workPage,
+      work: {
+        slug: 'work-teach-live',
+        name: '外國人專區',
+        subtitle: 'Work, Teach & Live',
+        tagline: '在台灣的職涯與生活，一路安心。',
+        intro:
+          '從第一份合約到真正安身，OuiGoal 為來台發展的外籍教師提供一條龍的職涯與生活支持。',
+        items: [
+          {
+            title: '外師來台職涯',
+            desc: '媒合值得信賴的公私立學校教職機會，依據資歷、教學風格與職涯目標精準配對。',
+          },
+          {
+            title: '簽證與 ARC 辦理',
+            desc: '工作許可、簽證與居留證（ARC）全程合規代辦，流程透明、省心省力。',
+          },
+          {
+            title: '中文學習',
+            desc: '精選中文課程與學習資源，讓外師在課堂內外都能如魚得水。',
+          },
+          {
+            title: '生活安家照顧',
+            desc: '租屋、銀行開戶、就醫與日常大小事 — 我們陪你安穩落地、好好生活。',
+          },
+        ],
+      },
       partner: {
         slug: 'partner-solutions',
         name: '學校/私立機構合作專區',

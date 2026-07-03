@@ -16,8 +16,8 @@ recruitment/management, and compliant school/institution partnerships.
   Custom domain (ouigoal.com / ouigoal.com.tw) deferred; attaching one later drops
   the base path.
 - **i18n:** zh-TW default at root, English mirrored under `/en/`. Language toggle in
-  header. Exception per brief: the Work, Teach & Live page (內頁 B, 外國人專區) is
-  English-only in both locales.
+  header. All pages are fully bilingual. (The brief originally marked 內頁 B 外國人專區
+  as 全英文; Vincent later chose a Chinese version too, for consistency.)
 
 ## Pages & routes
 
