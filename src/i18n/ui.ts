@@ -166,7 +166,7 @@ export const dict: Record<Locale, Dict> = {
       },
       work: {
         slug: 'work-teach-live',
-        name: '外師專區',
+        name: '海外師資專區',
         subtitle: 'Work, Teach & Live',
         tagline: '在台灣的職涯與生活，一路安心。',
         intro:
